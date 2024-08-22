@@ -1,78 +1,11 @@
-# mysoftware
-#usage:perl LMWgsFinder.v5.pl genomeTopLevel.fa(fasfile) genomeName(cannot contain '.') genomeAnnotationCDS.fasta genomeAnnotationPro.fasta
+# LMWgsFinder
 
-#example:
-#perl LMWgsFinder.v5.pl AK58.dna.toplevel.fa  TaAK58  AK58.cds.fasta  AK58.pep.fasta 
-#perl LMWgsFinder.v5.pl IWGSC_v1.dna.fa  IWGSCv1  IWGSC_v1.cds.fasta  IWGSC_v1.pep.fasta
+**`LMWgsFinder`** is a Perl script package (v5.26.2, built for x86_64-linux-thread-multi) designed to identify LMW-GS genes in the genomes of various wheat cultivars and related species, and to obtain related sequences and information. LMWgsFinder contains 34 Perl scripts and one Linux shell script, and requires the use of ncbi-blast-2.14.0+ and Linux system commands such as “cat”, “dos2unix”, “sed”,  etc to run properly.
 
-#test
-#perl LMWgsFinder.v5.pl testDNAtoplevel.fa Tatest testCDS.fasta testPro.fasta
-#If there are nearly 20 result files generated in the folder named 'results', 
-#it indicates that the package is running correctly. These result files 
-#can be used for sequence analysis and experimental validation of LMW-GS genes.
+The usage of LMWgsFinder is extremely simple. Simply place the genome sequence file, the corresponding CDS file and protein sequence file in the same directory with this package, and then run a main script： 
+```
+perl LMWgsFinder.v5.pl testDNAtoplevel.fa Tatest testCDS.fasta testPro.fasta
+```
+If there are nearly 20 result files generated in the folder named 'results', it indicates that the package is running correctly. These result files can be used for sequence analysis and experimental validation of LMW-GS genes.
 
-#Genomic sequence files, CDS sequence files, and protein sequence files must all be in Fasta format.
-#The extension of the genome sequence file needs to be ".fa", while, the file extension of CDS and Pro needs to be '.fasta'.
-#The main result file is located in the folder named 'results', with the file name containing'-all-LMW-GS_BatchCDSextractResultsfromChr.2.14.0'.
-
-
-The Programs Call Relationships(Including auxiliary files):
-BlastGethit-LMW-GS_BatchCDSextract_package.pl (the main program)
-   makeblastdb
-   blast-getFas2.14.0.pl
-      time blastn
-      fasseqExtrbyTbl2.14.0.pl
-   formatdb2.14.0allFas.pl
-      makeblastdb
-   seqBlastGethitToLMW-GS_BatchCDSextractResults-all2.14.0.pl
-      seqBlastGethitToLMW-GS_BatchCDSextractResults2.14.0.pl
-      LMW-GS_begin_new90bp.fasta(auxiliary file)
-      LMW-GS_end_new90bp.fasta(auxiliary file)
-         time blastn
-         findSubjectPositionScoreMax2.14.0.pl
-         findSubjectPositionScoreMax2.14.0-delRbyIdent.pl
-         delRepeat2.14.0.pl
-         seqExtraByIDinBeginEndFilenew-twoNo2-2.14.0.pl
-   cat
-   SeqpurifyForDNA.pl
-   makeblastdb
-   time blastn
-   getSeqNfromMoreforLMW-GSpackage.pl
-   getSeqNfromMoreforLMW-GSpackageStat.pl
-   time blastn
-   dna2proFromMoreforLMW-GSpackage.pl
-      dna2pro.pl
-      dna2proStrucPseudoStat.pl
-   SeqpurifyForPro.pl
-   makeblastdb
-   time blastp
-   StrucNormalCDSseqExtraByID-2.14.0-blastN2.14.0.pl
-      StrucNormalCDSseqExtraByID-2.14.0.pl
-      noGap-proStrucNormalCDS-blastN2.14.0.pl
-   seqblastTo27CSxy54.pl
-      FinPS-LMW-GS-inCSxy54-27CDS.fasta (auxiliary file)
-      FinPS-LMW-GS-inCSxy54-27pro.fasta (auxiliary file)
-      time blastn
-      time blastp
-   seqBlastGethitToLMW-GS_BatchCDSextractResults-all2.14.0-IDstat.pl
-      seqB_shIDstatChmodxdos2unix.pl
-      seqBlastGethitToLMW-GS_BatchCDSextractResults2.14.0-IDstat.pl
-         LMW-GS_begin_new90bp.fasta (auxiliary file)
-         LMW-GS_end_new90bp.fasta (auxiliary file)
-         seqExtraByIDinBeginEndFilenew-twoNo2-2.14.0-IDstat.pl
-      cat
-      sed
-      /seqB_deltabAddenter.sh
-      seqIDstatLMWtypeList.pl
-      cat
-      seqIDstatLMWtypeList2.pl
-      seqIDstatLMWtypeList2-findRe-CSxy54-27CDS-Pro.pl
-         seqIDstatLMWtypeList2-findRe.pl
-         seqIDstatLMWtypeList2-CSxy54-27CDS.pl (needs LMW-GS-begin-endID.txt)
-         seqIDstatLMWtypeList2-CSxy54-27Pro.pl (needs LMW-GS-begin-endID.txt)
-      cat
-   2.14.0 IDstatTogff3-all.pl
-   cp;
-
-
-
+Genomic sequence files, CDS sequence files, and protein sequence files must all be in Fasta format. The extension of the genome sequence file needs to be ".fa", while, the file extension of CDS and Pro needs to be '.fasta'. 
