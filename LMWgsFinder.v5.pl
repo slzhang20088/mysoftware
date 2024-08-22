@@ -74,6 +74,8 @@ system "perl seqBlastGethitToLMW-GS_BatchCDSextractResults-all2.14.0-IDstat.pl $
 
 system "perl 2.14.0.IDstatTogff3-all.pl";
 
+system "mkdir results";
+
 system "cp *-all-LMW-GS_BatchCDSextractResultsfromChr.2.14.0* ./results";
 
 
