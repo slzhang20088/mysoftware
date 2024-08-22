@@ -1,0 +1,26 @@
+{
+  "version": "1.2",
+  "dbname": "FinPS-LMW-GS-inCSxy54-27pro.fasta.db",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "FinPS-LMW-GS-inCSxy54-27pro.fasta",
+  "number-of-letters": 9215,
+  "number-of-sequences": 27,
+  "last-updated": "2023-08-10T19:54:00",
+  "number-of-volumes": 1,
+  "bytes-total": 61800,
+  "bytes-to-cache": 9603,
+  "files": [
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pdb",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.phd",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.phi",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.phr",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pin",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pog",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pos",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pot",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.psq",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.ptf",
+    "FinPS-LMW-GS-inCSxy54-27pro.fasta.db.pto"
+  ]
+}
